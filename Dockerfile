@@ -1,2 +1,2 @@
 FROM nginx
-COPY My-Portfolio  /usr/share/nginx/html/
+COPY html  /usr/share/nginx/html/
