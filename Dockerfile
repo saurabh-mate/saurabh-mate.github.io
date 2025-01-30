@@ -1,2 +1,3 @@
 FROM nginx
-COPY html.1  /usr/share/nginx/html/
+COPY  html /usr/share/nginx/html/
+EXPOSE 8000:80
