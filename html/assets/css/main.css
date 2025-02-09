@@ -1455,5 +1455,209 @@ section,
 # Starter Section Section
 --------------------------------------------------------------*/
 .starter-section {
-  /* Add your styles here */
+ 
+}
+ /* Hero Section Styling */
+.hero {
+  background: linear-gradient(to right, #000428, #004e92);
+  color: white;
+  text-align: left; /* Align text to the left */
+  padding: 100px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: start; /* Align content to the left */
+  height: 100vh; /* Full screen height */
+  padding-left: 10%; /* Adjust left padding */
+}
+
+/* Hero Text */
+.hero h1, .hero h2, .hero p {
+  text-align: left; /* Align text */
+}
+
+/* CTA Buttons */
+.cta-buttons {
+  margin-top: 20px;
+  text-align: left; /* Align buttons */
+}
+
+/* Social Media Links */
+.social-links {
+  margin-top: 20px;
+  text-align: left; /* Align icons */
+}
+/* Skills Section */
+.skill-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card i {
+  font-size: 40px;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+/* Resume Section */
+.resume .resume-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0563bb;
+  margin-bottom: 20px;
+}
+
+.resume .resume-item {
+  padding: 20px;
+  background: #ffffff;
+  border-left: 4px solid #0563bb;
+  position: relative;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resume .resume-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resume .resume-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resume .resume-item ul li {
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+/* Resume Section */
+.resume .resume-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0563bb;
+  margin-bottom: 20px;
+}
+
+.resume .resume-item {
+  padding: 20px;
+  background: #ffffff;
+  border-left: 4px solid #0563bb;
+  position: relative;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resume .resume-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resume .resume-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resume .resume-item ul li {
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+
+/* TachyonByte Logo */
+.company-logo {
+  max-width: 150px;
+  display: block;
+  margin: 10px 0;
+}
+/* Resume Section */
+.resume .resume-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0563bb;
+  margin-bottom: 20px;
+}
+
+.resume .resume-item {
+  padding: 20px;
+  background: #ffffff;
+  border-left: 4px solid #0563bb;
+  position: relative;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resume .resume-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resume .resume-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resume .resume-item ul li {
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Inline Logo (Company Logo Before Job Title) */
+.inline-logo {
+  max-width: 25px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+/* Resume Section */
+.resume .resume-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0563bb;
+  margin-bottom: 20px;
+}
+
+.resume .resume-item {
+  padding: 20px;
+  background: #ffffff;
+  border-left: 4px solid #0563bb;
+  position: relative;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resume .resume-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resume .resume-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resume .resume-item ul li {
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Inline Logo (Company Logo Before Job Title) */
+.inline-logo {
+  max-width: 25px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Download Resume Button */
+.text-center .btn-primary {
+  background-color: #0563bb;
+  border-color: #0563bb;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.text-center .btn-primary:hover {
+  transform: scale(1.05);
 }
