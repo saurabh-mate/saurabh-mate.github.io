@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CI/CD Automation for Portfolio</title>
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="container my-5">
+    <section class="section-title text-center mb-4" data-aos="fade-up">
+      <h2>CI/CD Automation for Portfolio</h2>
+      <p class="text-muted">Using GitLab CI/CD, Docker, and Ansible on a Private Server</p>
+    </section>
+
+    <section data-aos="fade-up" data-aos-delay="100">
+      <p>
+        This project aimed to automate the complete deployment lifecycle of my Dockerized portfolio website using GitLab CI/CD. Unlike cloud platforms such as AWS, this deployment was executed on a private server, adding complexity and unique challenges.
+      </p>
+
+      <h4 class="mt-4">Tools & Technologies Used</h4>
+      <ul>
+        <li>GitLab CI/CD – Continuous Integration & Deployment</li>
+        <li>Docker – Containerizing the portfolio website</li>
+        <li>Ansible – Automation and configuration management</li>
+        <li>GitLab Container Registry – Image storage</li>
+        <li>Private Linux Server – Hosting environment</li>
+      </ul>
+
+      <h4 class="mt-4">Pipeline Workflow</h4>
+      <ul>
+        <li>Build the Docker image and tag it using GitLab CI</li>
+        <li>Push the image to GitLab's Container Registry</li>
+        <li>Connect to the private server using SSH</li>
+        <li>Deploy the Docker container using Ansible and Bash scripts</li>
+        <li>Perform post-deployment health checks</li>
+      </ul>
+
+      <h4 class="mt-4">Challenges & Fixes</h4>
+
+      <h5 class="mt-3 text-primary">1. SSH Permission Denied</h5>
+      <p><strong>Cause:</strong> SSH key had insecure file permissions in the pipeline environment.</p>
+      <p><strong>Fix:</strong> Used <code>chmod 600</code> on the private key before connection.</p>
+
+      <h5 class="mt-3 text-primary">2. Docker Daemon Not Reachable</h5>
+      <p><strong>Cause:</strong> GitLab runner couldn’t communicate with the Docker daemon.</p>
+      <p><strong>Fix:</strong> Disabled TLS using <code>DOCKER_TLS_CERTDIR=""</code> and set <code>DOCKER_HOST</code> appropriately.</p>
+
+      <h5 class="mt-3 text-primary">3. Ansible Extra Vars Failure</h5>
+      <p><strong>Cause:</strong> Incorrect usage of <code>--extra-vars</code> syntax.</p>
+      <p><strong>Fix:</strong> Corrected command formatting and removed an unnecessary backslash.</p>
+
+      <h5 class="mt-3 text-primary">4. Healthcheck Curl Not Found</h5>
+      <p><strong>Cause:</strong> The <code>curl</code> package was not pre-installed in the job image.</p>
+      <p><strong>Fix:</strong> Installed it using <code>apk add --no-cache curl</code> before the check.</p>
+
+      <h4 class="mt-4">Final Output</h4>
+      <ul>
+        <li>Fully automated deployment pipeline using GitLab CI/CD</li>
+        <li>Containerized portfolio deployed on a private Linux server</li>
+        <li>Integrated healthcheck to verify successful deployment</li>
+        <li>Pipeline triggered on every push to the main branch</li>
+      </ul>
+
+      <p class="mt-3">
+        🔗 <a href="https://github.com/saurabh-mate" target="_blank">View Project on GitHub</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="text-center mt-5 mb-3 text-muted">
+    &copy; 2025 Saurabh Mate — All Rights Reserved.
+  </footer>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+
+</html>

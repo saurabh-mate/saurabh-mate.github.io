@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automating WordPress Deployment</title>
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="container my-5">
+    <section class="section-title text-center mb-4" data-aos="fade-up">
+      <h2>Automating WordPress Deployment</h2>
+      <p class="text-muted">With EC2, RDS, Terraform, Ansible, and Docker</p>
+    </section>
+
+    <section data-aos="fade-up" data-aos-delay="100">
+      <p>
+        In this project, I set out to fully automate the deployment of a WordPress website using AWS EC2, RDS (MySQL), Terraform, Ansible, and Docker. The goal was to create a single-click script that sets up everything and makes WordPress live at a custom domain via Cloudflare.
+      </p>
+
+      <h4 class="mt-4">Tools & Technologies Used</h4>
+      <ul>
+        <li>Terraform – Infrastructure provisioning</li>
+        <li>Ansible – Configuration management</li>
+        <li>Docker – Containerizing WordPress</li>
+        <li>AWS EC2 & RDS – Hosting & DB</li>
+        <li>Cloudflare – DNS & Domain Management</li>
+        <li>Bash – Deployment scripting</li>
+      </ul>
+
+      <h4 class="mt-4">Project Workflow</h4>
+      <ul>
+        <li>EC2 & RDS setup using Terraform</li>
+        <li>Dynamic <code>.env</code> generation in Bash</li>
+        <li>Docker and WordPress setup via Ansible</li>
+        <li>Automated WordPress installation using WP-CLI</li>
+      </ul>
+
+      <h4 class="mt-4">Issues & Fixes</h4>
+
+      <h5 class="mt-3 text-primary">1. <code>.env</code> File Not Found</h5>
+      <p><strong>Cause:</strong> Incorrect path usage in the script.</p>
+      <p><strong>Fix:</strong> Used absolute path with <code>scp</code> and in scripts.</p>
+
+      <h5 class="mt-3 text-primary">2. SSH Connection Refused</h5>
+      <p><strong>Cause:</strong> Script attempted SSH before instance was ready.</p>
+      <p><strong>Fix:</strong> Added wait loop to retry until SSH is successful:</p>
+      <pre><code>while ! ssh ...; do echo "Waiting for SSH..."; sleep 5; done</code></pre>
+
+      <h5 class="mt-3 text-primary">3. RDS Endpoint Unavailable</h5>
+      <p><strong>Cause:</strong> Docker tried to connect to MySQL before RDS was ready.</p>
+      <p><strong>Fix:</strong> Waited for port 3306 to be open:</p>
+      <pre><code>while ! nc -z $RDS_ENDPOINT 3306; do echo "Waiting for MySQL..."; sleep 10; done</code></pre>
+
+      <h5 class="mt-3 text-primary">4. MySQL Connection Refused</h5>
+      <p><strong>Cause:</strong> RDS security group didn’t allow inbound traffic from EC2.</p>
+      <p><strong>Fix:</strong> Updated Terraform with the following rule:</p>
+      <pre><code>ingress {
+  from_port = 3306
+  to_port   = 3306
+  protocol  = "tcp"
+  security_groups = [aws_security_group.TF_SG.id]
+}</code></pre>
+
+      <h5 class="mt-3 text-primary">5. WP-CLI Not Found</h5>
+      <p><strong>Cause:</strong> WP-CLI wasn’t pre-installed in the container.</p>
+      <p><strong>Fix:</strong> Manually installed with:</p>
+      <pre><code>wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x /usr/local/bin/wp</code></pre>
+
+      <h5 class="mt-3 text-primary">6. WordPress Admin Setup Failing</h5>
+      <p><strong>Cause:</strong> Env variables were not passed properly during container run.</p>
+      <p><strong>Fix:</strong> Synced environment values and created admin user with WP-CLI.</p>
+
+      <h4 class="mt-4">Final Output</h4>
+      <ul>
+        <li>Live WordPress Site hosted via EC2</li>
+        <li>Secured RDS DB and container setup</li>
+        <li>Deployment fully automated via <code>deploy.sh</code></li>
+      </ul>
+
+      <p class="mt-3">
+        🔗 <a href="https://github.com/saurabh-mate" target="_blank">View Project on GitHub</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="text-center mt-5 mb-3 text-muted">
+    &copy; 2025 Saurabh Mate — All Rights Reserved.
+  </footer>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+
+</html>
